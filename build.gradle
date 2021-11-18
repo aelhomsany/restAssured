@@ -1,19 +1,71 @@
+buildscript {
+    ext {
+        mysqlConnectorVersion = "8.0.27"
+        mongoDbDriverVersion = "4.3.4"
+        auth0Version = "3.18.2"
+        javaxMailApiVersion = "1.6.2"
+        sunJavaxMailVersion = "1.6.2"
+        sunSmtpVersion = "1.6.2"
+        restAssuredVersion = "4.4.0"
+        javaHamcrestVersion = "2.0.0.0"
+        apacheTextVersion = "1.9"
+        javaWSClientVersion = "1.1"
+        tyrusVersion = "2.0.1"
+        cucumberVersion = "7.0.0"
+        gherkinVersion = "22.0.0"
+        tagExpressionVersion = "4.1.0"
+        gsonVersion = "2.8.9"
+        simpleJsonVersion = "1.1.1"
+        schemaValidatorVersion = '2.9.0'
+        testNgVersion = '7.4.0'
+        apacheCommons = '2.11.0'
+        cucumberPicocontainer = '1.2.6'
+    }
+}
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
 group 'org.example'
 version '1.0-SNAPSHOT'
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-}
+    implementation "mysql:mysql-connector-java:$mysqlConnectorVersion"
+    implementation "org.mongodb:mongodb-driver-sync:$mongoDbDriverVersion"
+    implementation "com.auth0:java-jwt:$auth0Version"
+    implementation "javax.mail:javax.mail-api:$javaxMailApiVersion"
+    implementation "com.sun.mail:javax.mail:$sunJavaxMailVersion"
+    implementation "com.sun.mail:smtp:$sunSmtpVersion"
+    implementation "io.rest-assured:json-path:$restAssuredVersion"
+    implementation "org.apache.commons:commons-text:$apacheTextVersion"
+    implementation "javax.websocket:javax.websocket-client-api:$javaWSClientVersion"
+    implementation "org.glassfish.tyrus.bundles:tyrus-standalone-client:$tyrusVersion"
+    implementation "io.cucumber:cucumber-java:$cucumberVersion"
+    implementation "io.cucumber:cucumber-java8:$cucumberVersion"
+    implementation "io.cucumber:cucumber-gherkin:$cucumberVersion"
+    implementation "io.cucumber:gherkin:$gherkinVersion"
+    implementation "io.cucumber:datatable-matchers:$cucumberVersion"
+    implementation "io.cucumber:tag-expressions:$tagExpressionVersion"
+    implementation "com.google.code.gson:gson:$gsonVersion"
+    implementation "com.googlecode.json-simple:json-simple:$simpleJsonVersion"
+    implementation "io.rest-assured:rest-assured:$restAssuredVersion"
+    implementation "org.testng:testng:$testNgVersion"
+    implementation "io.cucumber:cucumber-testng:$cucumberVersion"
+    implementation "commons-io:commons-io:$apacheCommons"
+    implementation "io.cucumber:cucumber-picocontainer:$cucumberVersion"
 
+    implementation("com.jayway.restassured:json-schema-validator:$schemaValidatorVersion") {
+        exclude group: 'javax.mail', module: 'mailapi'
+    }
+}
 test {
     useJUnitPlatform()
 }
