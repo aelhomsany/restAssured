@@ -3,18 +3,11 @@ package stepdefinitions;
 
 import base.Base;
 import io.cucumber.java8.En;
-import io.restassured.RestAssured;
-import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.http.Method;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-import org.apache.commons.io.output.WriterOutputStream;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
 import request.Request;
 
-import java.io.PrintStream;
-import java.io.StringWriter;
 
 
 public class WeatherTemp extends Base implements En   {

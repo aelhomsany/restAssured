@@ -16,8 +16,14 @@ public class CustomLogFilter implements Filter {
         Response response = filterContext.next(filterableRequestSpecification, filterableResponseSpecification);
 
         requestBuilderLogs = new StringBuilder();
-        requestBuilderLogs.append("\n" + "-------------------------------------------------------------------------------------" + "\n");
-        requestBuilderLogs.append("\n" + "#[API Request]:" + "\n");
+        requestBuilderLogs.append("""
+
+                -------------------------------------------------------------------------------------
+                """);
+        requestBuilderLogs.append("""
+
+                #[API Request]:
+                """);
         requestBuilderLogs.append("Request method: ").append(objectValidation(filterableRequestSpecification.getMethod())).append("\n");
         requestBuilderLogs.append("Request URI: ").append(objectValidation(filterableRequestSpecification.getURI())).append("\n");
         requestBuilderLogs.append("Form Params: ").append(objectValidation(filterableRequestSpecification.getFormParams())).append("\n");
@@ -26,11 +32,17 @@ public class CustomLogFilter implements Filter {
         requestBuilderLogs.append("Body: ").append(objectValidation(filterableRequestSpecification.getBody())).append("\n");
 
         responseBuilderLogs = new StringBuilder();
-        responseBuilderLogs.append("\n" + "-[API Response]:" + "\n");
+        responseBuilderLogs.append("""
+
+                -[API Response]:
+                """);
         responseBuilderLogs.append("Status Code:").append(response.getStatusCode()).append("\n");
         responseBuilderLogs.append("Response Body: " + "\n").append(response.getBody().prettyPrint()).append("\n");
         responseBuilderLogs.append("Response Time: " + "\n").append(response.getTime()).append(" milliseconds").append("\n");
-        responseBuilderLogs.append("\n" + "-------------------------------------------------------------------------------------" + "\n");
+        responseBuilderLogs.append("""
+
+                -------------------------------------------------------------------------------------
+                """);
 
         return response;
     }

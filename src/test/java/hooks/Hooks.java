@@ -7,8 +7,8 @@ public class Hooks  extends  Base implements En {
 
 //      Base base = new Base();
 //
-//      public Hooks (Base base){
-//
-//      }
+      public Hooks (Base base){
+
+      }
 
 }
