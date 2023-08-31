@@ -1,25 +1,25 @@
 buildscript {
     ext {
-        mysqlConnectorVersion = "8.0.27"
+        mysqlConnectorVersion = '8.0.28'
         mongoDbDriverVersion = "4.3.4"
         auth0Version = "3.18.2"
         javaxMailApiVersion = "1.6.2"
         sunJavaxMailVersion = "1.6.2"
         sunSmtpVersion = "1.6.2"
-        restAssuredVersion = "4.4.0"
+        restAssuredVersion = "5.3.1"
         javaHamcrestVersion = "2.0.0.0"
-        apacheTextVersion = "1.9"
+        apacheTextVersion = '1.10.0'
         javaWSClientVersion = "1.1"
         tyrusVersion = "2.0.1"
-        cucumberVersion = "7.0.0"
-        gherkinVersion = "22.0.0"
+        cucumberVersion = "7.13.0"
+        gherkinVersion = "26.2.0"
         tagExpressionVersion = "4.1.0"
         gsonVersion = "2.8.9"
         simpleJsonVersion = "1.1.1"
         schemaValidatorVersion = '2.9.0'
-        testNgVersion = '7.4.0'
-        apacheCommons = '2.11.0'
-        cucumberPicocontainer = '1.2.6'
+        testNgVersion = '7.8.0'
+        apacheCommons = '2.13.0'
+//        cucumberPicocontainer = '1.2.6'
     }
 }
 plugins {

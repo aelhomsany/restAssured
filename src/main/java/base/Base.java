@@ -6,7 +6,7 @@ public class Base {
 
 
     // general Objects
-    public static Response response;
+    public  Response response;
     public  String city;
 
 
