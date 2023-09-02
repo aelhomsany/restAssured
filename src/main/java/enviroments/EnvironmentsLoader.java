@@ -1,5 +1,9 @@
 package enviroments;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import request.AssistanceMethods;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,6 +11,7 @@ import java.util.Properties;
 
 public class EnvironmentsLoader {
 
+    private static final Logger logger = LoggerFactory.getLogger(EnvironmentsLoader.class);
 
 
     // private instance, so that it can be accessed by only by getInstance() method
@@ -48,7 +53,7 @@ public class EnvironmentsLoader {
                 environment = "test";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Error in set the env: " + e.getMessage(), e);
         }
     }
 
@@ -63,7 +68,7 @@ public class EnvironmentsLoader {
             System.out.println(localDirectory+environment);
             domainPropertiesFile = new FileReader(localDirectory + "/src/main/resources/" + environment + "/domain.properties");
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            logger.error("Error in load the local dir: " + e.getMessage(), e);
         }
 
         //Load the files into the property variables
@@ -72,7 +77,7 @@ public class EnvironmentsLoader {
         try {
             environmentProperties.load(domainPropertiesFile);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Error in load the domain: " + e.getMessage(), e);
         }
 
     }

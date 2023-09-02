@@ -61,6 +61,11 @@ dependencies {
     implementation "io.cucumber:cucumber-testng:$cucumberVersion"
     implementation "commons-io:commons-io:$apacheCommons"
     implementation "io.cucumber:cucumber-picocontainer:$cucumberVersion"
+    // https://mvnrepository.com/artifact/ch.qos.logback/slf4j
+    implementation 'ch.qos.logback:logback-classic:1.2.9'
+    implementation 'org.slf4j:slf4j-api:1.7.32'
+
+
 
     implementation("com.jayway.restassured:json-schema-validator:$schemaValidatorVersion") {
         exclude group: 'javax.mail', module: 'mailapi'

@@ -9,8 +9,14 @@ import org.json.simple.parser.ParseException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AssistanceMethods {
+
+    private static final Logger logger = LoggerFactory.getLogger(AssistanceMethods.class);
+
+
     public Iterator<Map<String, String>> convertDataTableToIterator(DataTable dt) {
         List<Map<String, String>> listOfMap = dt.entries();
         return listOfMap.iterator();
@@ -104,8 +110,8 @@ public class AssistanceMethods {
         try {
             jsonObject = (JSONObject) parser.parse(jsonString);
         } catch (ParseException e) {
-            e.printStackTrace();
-        }
+            // Log the exception instead of printing the stack trace
+            logger.error("Error parsing JSON string: " + e.getMessage(), e);        }
         return jsonObject;
     }
     public JSONArray convertStringToJsonArray(String jsonString) {
@@ -115,7 +121,7 @@ public class AssistanceMethods {
         try {
             jsonArray = (JSONArray) parser.parse(jsonString);
         } catch (ParseException e) {
-            e.printStackTrace();
+            logger.error("Error parsing ARRAY string: " + e.getMessage(), e);
         }
         return jsonArray;
     }

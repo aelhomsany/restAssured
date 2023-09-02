@@ -1,7 +1,7 @@
 package enviroments;
 
 public class EnvironmentsPicker {
-private EnvironmentsLoader environmentsLoader;
+private final EnvironmentsLoader environmentsLoader;
 
 public EnvironmentsPicker() {environmentsLoader = EnvironmentsLoader.getInstance();}
 

@@ -2,17 +2,20 @@ package stepdefinitions;
 
 
 import base.Base;
+import enviroments.EnvironmentsLoader;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java8.En;
 import io.restassured.http.Method;
 import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import request.AssistanceMethods;
 import request.Request;
 
 
 public class WeatherTemp extends Base implements En {
 
+    private static final Logger logger = LoggerFactory.getLogger(EnvironmentsLoader.class);
 
     public WeatherTemp(Base base) {
 
@@ -27,6 +30,8 @@ public class WeatherTemp extends Base implements En {
 
             base.city = queryParams.get("query").toString();
             System.out.println(request.getLogs());
+
+            logger.error("test logs ");
 
         });
         Then("^status code is \"([^\"]*)\"$", (Integer statusCode) -> {
