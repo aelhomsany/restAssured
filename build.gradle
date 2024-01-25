@@ -64,6 +64,9 @@ dependencies {
     // https://mvnrepository.com/artifact/ch.qos.logback/slf4j
     implementation 'ch.qos.logback:logback-classic:1.2.9'
     implementation 'org.slf4j:slf4j-api:1.7.32'
+    // https://mvnrepository.com/artifact/com.rabbitmq/amqp-client
+    implementation group: 'com.rabbitmq', name: 'amqp-client', version: '5.20.0'
+
 
 
 
