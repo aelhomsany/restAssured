@@ -1,25 +1,24 @@
 buildscript {
     ext {
-        mysqlConnectorVersion = '8.0.28'
-        mongoDbDriverVersion = "4.3.4"
-        auth0Version = "3.18.2"
+        mysqlConnectorVersion = '8.0.33'
+      //  mongoDbDriverVersion = "4.3.4"
+        auth0Version = "4.4.0"
         javaxMailApiVersion = "1.6.2"
         sunJavaxMailVersion = "1.6.2"
         sunSmtpVersion = "1.6.2"
-        restAssuredVersion = "5.3.1"
+        restAssuredVersion = "5.5.0"
         javaHamcrestVersion = "2.0.0.0"
-        apacheTextVersion = '1.10.0'
+        apacheTextVersion = '1.12.0'
         javaWSClientVersion = "1.1"
-        tyrusVersion = "2.0.1"
-        cucumberVersion = "7.13.0"
-        gherkinVersion = "26.2.0"
-        tagExpressionVersion = "4.1.0"
-        gsonVersion = "2.8.9"
+        tyrusVersion = "2.2.0"
+        cucumberVersion = "7.19.0"
+        gherkinVersion = "29.0.0"
+        tagExpressionVersion = "6.1.0"
+        gsonVersion = "2.11.0"
         simpleJsonVersion = "1.1.1"
-        schemaValidatorVersion = '2.9.0'
-        testNgVersion = '7.8.0'
-        apacheCommons = '2.13.0'
-//        cucumberPicocontainer = '1.2.6'
+        schemaValidatorVersion = '5.5.0'
+        testNgVersion = '7.10.2'
+        apacheCommons = '2.17.0'
     }
 }
 plugins {
@@ -31,15 +30,24 @@ group 'org.example'
 version '1.0-SNAPSHOT'
 
 repositories {
-    mavenLocal()
     mavenCentral()
+    maven {
+        url = uri("https://company/com/maven2")
+    }
+    mavenLocal()
+    flatDir {
+        dirs "libs"
+    }
+    google()
+    gradlePluginPortal()
+
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    //testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+   // testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     implementation "mysql:mysql-connector-java:$mysqlConnectorVersion"
-    implementation "org.mongodb:mongodb-driver-sync:$mongoDbDriverVersion"
+   // implementation "org.mongodb:mongodb-driver-sync:$mongoDbDriverVersion"
     implementation "com.auth0:java-jwt:$auth0Version"
     implementation "javax.mail:javax.mail-api:$javaxMailApiVersion"
     implementation "com.sun.mail:javax.mail:$sunJavaxMailVersion"
@@ -62,18 +70,25 @@ dependencies {
     implementation "commons-io:commons-io:$apacheCommons"
     implementation "io.cucumber:cucumber-picocontainer:$cucumberVersion"
     // https://mvnrepository.com/artifact/ch.qos.logback/slf4j
-    implementation 'ch.qos.logback:logback-classic:1.2.9'
+    implementation 'ch.qos.logback:logback-classic:1.5.8'
     implementation 'org.slf4j:slf4j-api:1.7.32'
     // https://mvnrepository.com/artifact/com.rabbitmq/amqp-client
     implementation group: 'com.rabbitmq', name: 'amqp-client', version: '5.20.0'
+// https://mvnrepository.com/artifact/com.gradle.enterprise/com.gradle.enterprise.gradle.plugin
+    implementation group: 'com.gradle.enterprise', name: 'com.gradle.enterprise.gradle.plugin', version: '3.18.1', ext: 'pom'
+
+    // https://mvnrepository.com/artifact/com.aventstack/extentreports
+    implementation group: 'com.aventstack', name: 'extentreports', version: '5.1.2'
+// https://mvnrepository.com/artifact/tech.grasshopper/extentreports-cucumber7-adapter
+    implementation group: 'tech.grasshopper', name: 'extentreports-cucumber7-adapter', version: '1.14.0'
+// https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator
+    implementation group: 'io.rest-assured', name: 'json-schema-validator', version: '5.5.0'
 
 
-
-
-    implementation("com.jayway.restassured:json-schema-validator:$schemaValidatorVersion") {
-        exclude group: 'javax.mail', module: 'mailapi'
-    }
 }
+
+
+
 test {
-    useJUnitPlatform()
+    useTestNG()
 }

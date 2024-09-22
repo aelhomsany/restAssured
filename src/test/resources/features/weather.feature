@@ -1,5 +1,7 @@
 Feature: get weather temperature for specific city
 
+
+  @hs
   Scenario Outline: Send get request to have the value for a city
     When send request to get temperature
       | query   | access_key   |

@@ -68,7 +68,7 @@ public class EnvironmentsLoader {
             System.out.println(localDirectory+environment);
             domainPropertiesFile = new FileReader(localDirectory + "/src/main/resources/" + environment + "/domain.properties");
         } catch (FileNotFoundException e) {
-            logger.error("Error in load the local dir: " + e.getMessage(), e);
+            logger.error("Error in load the local dir: {}", e.getMessage(), e);
         }
 
         //Load the files into the property variables

@@ -1,10 +1,13 @@
 <configuration>
 
+    <!-- Define a property for the log file path -->
+    <property name="LOG_PATH" value="logs/logfile.log"/>
+
     <!-- Define a file appender -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>D:/CoralRepos/GitHub/restAssured/logfile.log</file>
+        <file>${LOG_PATH}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>D:/CoralRepos/GitHub/restAssured/logfile.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${LOG_PATH}.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>7</maxHistory> <!-- Number of archived files to keep -->
         </rollingPolicy>
         <encoder>
